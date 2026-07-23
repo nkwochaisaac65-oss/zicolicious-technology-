@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Zicolicious Technology</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<header>
+<div class="logo">Z</div>
+<h1>Zicolicious Technology</h1>
+<p>Premium Gadgets & Accessories | Established 2026</p>
+<p>TikTok: @Zicolicious16</p>
+</header>
+
+<section>
+<h2>🔥 Our Products</h2>
+
+<div class="products">
+
+<div class="product">
+<img src="https://via.placeholder.com/300">
+<h3>Transparent Buds</h3>
+<p>₦6,000</p>
+<p>Clear sound, stylish design. Available in Black, Green, Pink & Blue.</p>
+<button onclick="addCart('Transparent Buds',6000)">Add to Cart 🛒</button>
+</div>
+
+<div class="product">
+<img src="https://via.placeholder.com/300">
+<h3>Neckband Earpiece</h3>
+<p>₦5,000</p>
+<p>Comfortable sound experience for music and calls.</p>
+<button onclick="addCart('Neckband Earpiece',5000)">Add to Cart 🛒</button>
+</div>
+
+<div class="product">
+<img src="https://via.placeholder.com/300">
+<h3>Power Bank 20,000mAh</h3>
+<p>₦15,000</p>
+<p>35W/37W Fast Charging with Type-C Input & Output.</p>
+<button onclick="addCart('Power Bank 20000mAh',15000)">Add to Cart 🛒</button>
+</div>
+
+<div class="product">
+<img src="https://via.placeholder.com/300">
+<h3>Power Bank 50,000mAh</h3>
+<p>₦40,000</p>
+<p>Massive power for heavy users.</p>
+<button onclick="addCart('Power Bank 50000mAh',40000)">Add to Cart 🛒</button>
+</div>
+
+</div>
+
+</section>
+
+<section class="cart">
+<h2>🛒 Basket</h2>
+<p id="cart">Your basket is empty</p>
+<h3>Total: ₦<span id="total">0</span></h3>
+
+<a href="https://wa.me/2347031319373">
+Order on WhatsApp
+</a>
+</section>
+
+<section>
+<h2>⭐ Customer Reviews</h2>
+<textarea placeholder="Write your review"></textarea>
+<button>Submit Review</button>
+</section>
+
+<section>
+<h2>📜 Store Policy</h2>
+<p>Quality products, reliable service, and customer satisfaction are our priority. Contact us for orders and support.</p>
+</section>
+
+<script>
+let total = 0;
+let items = [];
+
+function addCart(name,price){
+items.push(name);
+total += price;
+document.getElementById("cart").innerHTML = items.join("<br>");
+document.getElementById("total").innerHTML = total;
+}
+</script>
+
+</body>
+</html>
