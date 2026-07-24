@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zicolicious Technology - Premium Gadgets Store</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="topbar">🔥 30% OFF YOUR FIRST ORDER 🔥 Get 30% discount on your first item purchase.</div>
+
+<!-- Header -->
+<header>
+  <div class="nav">
+    <div class="logo">Z<span>icolicious</span></div>
+    <div class="search">
+      <input type="text" id="search" placeholder="Search Power Banks, Smartwatches...">
+      <button onclick="searchProducts()">Search</button>
+    </div>
+    <div class="nav-icons">
+      <a onclick="openPage('about')">About</a>
+      <a onclick="openPage('contact')">Contact</a>
+      <a onclick="openCart()">Cart <span id="cartCount">0</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Premium Tech. Delivered Fast.</h1>
+    <p>Power Banks, Smartwatches, Earbuds & Accessories</p>
+    <div class="hero-btns">
+      <button class="btn-gold" onclick="scrollToSection('products')">Shop Now</button>
+      <button class="btn-outline" onclick="scrollToSection('products')">View Products</button>
+    </div>
+  </div>
+  <div class="hero-banner">🔋 ⌚ 🎧 📱</div>
+</section>
+
+<!-- Categories -->
+<section class="categories">
+  <h2>Shop By Category</h2>
+  <div class="cat-grid">
+    <div class="cat" onclick="filterCat('Power Bank')">🔋 Power Banks</div>
+    <div class="cat" onclick="filterCat('Smartwatch')">⌚ Smart Watches</div>
+    <div class="cat" onclick="filterCat('Earbuds')">🎧 Earbuds</div>
+    <div class="cat" onclick="filterCat('Charger')">🔌 Chargers</div>
+    <div class="cat" onclick="filterCat('Tripod')">📷 Tripod Stands</div>
+    <div class="cat" onclick="filterCat('Accessory')">📱 Phone Accessories</div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="products" id="products">
+  <h2>Best Sellers</h2>
+  <div class="product-grid" id="productGrid"></div>
+</section>
+
+<!-- Why Us -->
+<section class="why">
+  <h2>Why Choose Zicolicious Technology</h2>
+  <div class="why-grid">
+    <div>✅ Original Products</div>
+    <div>🚚 7 Days Delivery</div>
+    <div>💬 24/7 WhatsApp Support</div>
+    <div>🛡️ 1 Year Warranty</div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews">
+  <h2>Customer Reviews</h2>
+  <div class="review-card">
+    <p>⭐ "Power bank lasts 3 days! Original and fast delivery."</p>
+    <b>- Chinedu, Port Harcourt</b>
+  </div>
+  <div class="review-card">
+    <p>⭐⭐⭐⭐⭐ "Smartwatch is premium quality. Zicolicious is trusted."</p>
+    <b>- Aisha, Lagos</b>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>Zicolicious Technology</h4>
+      <p>Est. 2026<br>TikTok: @Zicolicious16<br>WhatsApp: 07031319373</p>
+    </div>
+    <div>
+      <h4>Policies</h4>
+      <a onclick="openPage('privacy')">Privacy Policy</a><br>
+      <a onclick="openPage('return')">Return Policy</a><br>
+      <a onclick="openPage('delivery')">Delivery Policy</a><br>
+      <a onclick="openPage('terms')">Terms & Conditions</a>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <a onclick="scrollToSection('products')">All Products</a><br>
+      <a onclick="openCart()">Cart</a><br>
+      <a onclick="openPage('contact')">Contact</a>
+    </div>
+  </div>
+  <p class="copy">© 2026 Zicolicious Technology. All Rights Reserved.</p>
+</footer>
+
+<!-- Cart Modal -->
+<div class="modal" id="cartModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeCart()">&times;</span>
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <h3>Total: ₦<span id="cartTotal">0</span></h3>
+    <button class="btn-gold" onclick="checkoutWhatsApp()">Checkout via WhatsApp</button>
+  </div>
+</div>
+
+<!-- Product Detail Modal -->
+<div class="modal" id="productModal">
+  <div class="modal-content" id="productDetail"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
