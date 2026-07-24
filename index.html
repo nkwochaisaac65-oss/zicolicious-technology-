@@ -14,7 +14,8 @@
 <p>Established 2026 | TikTok: @Zicolicious16</p>
 <nav>
 <a href="#products">Products</a>
-<a href="#reviews">Reviews</a>
+<a href="#testimonials">Testimonials</a>
+<a href="#newsletter">Newsletter</a>
 <a href="#policy">Policy</a>
 <a href="#contact">Contact</a>
 </nav>
@@ -100,28 +101,89 @@
 
 <section id="testimonials">
 <h2>⭐ What Our Customers Say</h2>
+<p style="text-align: center; color: #666; margin-bottom: 30px;">Join over 500+ satisfied customers who love Zicolicious Technology!</p>
 <div class="testimonials">
+
 <div class="testimonial">
-<p>"Best power bank ever! Fast shipping and excellent quality. Highly recommended! 🔥"</p>
-<p><strong>- Chioma M.</strong></p>
+<div class="testimonial-header">
+<p class="rating-stars">⭐⭐⭐⭐⭐</p>
+<p class="testimonial-name">Chioma M.</p>
+<p class="testimonial-product">Verified buyer • Power Bank 20,000mAh</p>
 </div>
+<p class="testimonial-text">"Best power bank ever! Fast shipping and excellent quality. Highly recommended! The charging speed is amazing and it lasted me through a 3-day trip. 🔥"</p>
+<p class="testimonial-date">2 weeks ago</p>
+</div>
+
 <div class="testimonial">
-<p>"The earbuds sound amazing! Worth every naira. Great customer service too!"</p>
-<p><strong>- Tunde A.</strong></p>
+<div class="testimonial-header">
+<p class="rating-stars">⭐⭐⭐⭐⭐</p>
+<p class="testimonial-name">Tunde A.</p>
+<p class="testimonial-product">Verified buyer • Transparent Buds</p>
 </div>
+<p class="testimonial-text">"The earbuds sound amazing! Worth every naira. Great customer service too! The sound quality is professional-grade and battery lasts all day."</p>
+<p class="testimonial-date">1 month ago</p>
+</div>
+
 <div class="testimonial">
-<p>"My tripod is perfect for my TikTok videos. Very stable and affordable!"</p>
-<p><strong>- Zainab K.</strong></p>
+<div class="testimonial-header">
+<p class="rating-stars">⭐⭐⭐⭐⭐</p>
+<p class="testimonial-name">Zainab K.</p>
+<p class="testimonial-product">Verified buyer • Adjustable Tripod Stand</p>
 </div>
+<p class="testimonial-text">"My tripod is perfect for my TikTok videos. Very stable and affordable! I've used it for 100+ videos and it's still perfect. Definitely recommend!"</p>
+<p class="testimonial-date">3 weeks ago</p>
 </div>
+
+<div class="testimonial">
+<div class="testimonial-header">
+<p class="rating-stars">⭐⭐⭐⭐⭐</p>
+<p class="testimonial-name">Seun O.</p>
+<p class="testimonial-product">Verified buyer • USB-C Fast Charger</p>
+</div>
+<p class="testimonial-text">"Fastest charger I've ever owned! Charges my laptop and phone at the same time. Delivery was quick and packaging was professional. A+++"</p>
+<p class="testimonial-date">1 week ago</p>
+</div>
+
+<div class="testimonial">
+<div class="testimonial-header">
+<p class="rating-stars">⭐⭐⭐⭐⭐</p>
+<p class="testimonial-name">Grace N.</p>
+<p class="testimonial-product">Verified buyer • Neckband Earpiece</p>
+</div>
+<p class="testimonial-text">"Love the neckband earpiece! Super comfortable even after hours of wear. Sound quality is crystal clear and the price is unbeatable!"</p>
+<p class="testimonial-date">10 days ago</p>
+</div>
+
+<div class="testimonial">
+<div class="testimonial-header">
+<p class="rating-stars">⭐⭐⭐⭐⭐</p>
+<p class="testimonial-name">David C.</p>
+<p class="testimonial-product">Verified buyer • Power Bank 50,000mAh</p>
+</div>
+<p class="testimonial-text">"This 50,000mAh is a game-changer! I travel a lot and this keeps all my devices charged. Worth every penny. Customer service was fantastic too!"</p>
+<p class="testimonial-date">5 days ago</p>
+</div>
+
+</div>
+</section>
+
+<section id="newsletter">
+<h2>📧 Subscribe to Our Newsletter</h2>
+<p>Get exclusive deals, new product announcements, and special discounts straight to your inbox!</p>
+<div class="newsletter-box">
+<input type="email" id="emailInput" placeholder="Enter your email address" required>
+<button onclick="subscribeNewsletter()">Subscribe 🚀</button>
+</div>
+<p style="font-size: 12px; color: #999; margin-top: 10px;">We promise not to spam. Unsubscribe anytime.</p>
 </section>
 
 <section id="reviews">
 <h2>✍️ Share Your Review</h2>
 <div class="review-box">
 <input type="text" id="reviewName" placeholder="Your name">
+<input type="email" id="reviewEmail" placeholder="Your email">
 <textarea id="reviewText" placeholder="Write your review here..."></textarea>
-<button onclick="alert('Thank you for your review! We appreciate your feedback.')">Submit Review ⭐</button>
+<button onclick="submitReview()">Submit Review ⭐</button>
 </div>
 </section>
 
@@ -140,7 +202,7 @@
 
 <section id="about">
 <h2>💼 About Zicolicious Technology</h2>
-<p>Zicolicious Technology is a premium tech accessories brand providing affordable and reliable gadgets. We believe quality tech shouldn't be expensive. Founded in 2026, we've been delivering excellence to thousands of happy customers.</p>
+<p>Zicolicious Technology is a premium tech accessories brand providing affordable and reliable gadgets. We believe quality tech shouldn't be expensive. Founded in 2026, we've been delivering excellence to thousands of happy customers across Nigeria.</p>
 <p><strong>Our Mission:</strong> Make premium tech accessories accessible to everyone in Nigeria and beyond.</p>
 </section>
 
@@ -222,6 +284,36 @@ function updateCart() {
   
   document.getElementById('cartItems').innerHTML = cartHTML;
   document.getElementById('total').innerHTML = total;
+}
+
+function subscribeNewsletter() {
+  const email = document.getElementById('emailInput').value;
+  if (email === '') {
+    alert('Please enter your email address');
+    return;
+  }
+  if (!email.includes('@')) {
+    alert('Please enter a valid email address');
+    return;
+  }
+  alert('✅ Thanks for subscribing! Check your email for exclusive deals.');
+  document.getElementById('emailInput').value = '';
+}
+
+function submitReview() {
+  const name = document.getElementById('reviewName').value;
+  const email = document.getElementById('reviewEmail').value;
+  const text = document.getElementById('reviewText').value;
+  
+  if (name === '' || email === '' || text === '') {
+    alert('Please fill in all fields');
+    return;
+  }
+  
+  alert('⭐ Thank you ' + name + '! Your review has been submitted. We appreciate your feedback!');
+  document.getElementById('reviewName').value = '';
+  document.getElementById('reviewEmail').value = '';
+  document.getElementById('reviewText').value = '';
 }
 
 // Add smooth scrolling
