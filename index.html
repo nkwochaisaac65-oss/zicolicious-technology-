@@ -19,72 +19,78 @@
 <a href="#contact">Contact</a>
 </nav>
 </header>
+
 <section class="hero">
 <h2>Your Trusted Tech Plug</h2>
 <p>Quality gadgets and accessories delivered with confidence.</p>
-<button>Shop Now</button>
+<button onclick="document.getElementById('products').scrollIntoView()">Shop Now</button>
 </section>
+
 <section id="products">
 <h2>🔥 Featured Products</h2>
 <div class="products">
+
 <div class="product">
-<img src="images/earbuds.jpg">
-<h3>Transparent Buds</h3>
+<h3>🎧 Transparent Buds</h3>
 <p>₦6,000</p>
 <p>Crystal clear sound with stylish design. Available in Black, Green, Pink and Blue.</p>
 <button onclick="addCart('Transparent Buds',6000)">Add to Cart 🛒</button>
 </div>
+
 <div class="product">
-<img src="images/neckband.jpg">
-<h3>Neckband Earpiece</h3>
+<h3>🎧 Neckband Earpiece</h3>
 <p>₦5,000</p>
 <p>Comfortable sound experience for music and calls.</p>
 <button onclick="addCart('Neckband Earpiece',5000)">Add to Cart 🛒</button>
-</div><div class="product">
-<img src="images/powerbank20.jpg">
-<h3>Power Bank 20,000mAh</h3>
+</div>
+
+<div class="product">
+<h3>🔋 Power Bank 20,000mAh</h3>
 <p>₦15,000</p>
 <p>35W/37W fast charging with Type-C input and output. Stay powered all day.</p>
 <button onclick="addCart('Power Bank 20,000mAh',15000)">Add to Cart 🛒</button>
 </div>
+
 <div class="product">
-<img src="images/powerbank50.jpg">
-<h3>Power Bank 50,000mAh</h3>
+<h3>🔋 Power Bank 50,000mAh</h3>
 <p>₦40,000</p>
 <p>Massive battery capacity for heavy users and long trips.</p>
 <button onclick="addCart('Power Bank 50,000mAh',40000)">Add to Cart 🛒</button>
 </div>
+
 <div class="product">
-<img src="images/tripod.jpg">
-<h3>Adjustable Tripod Stand</h3>
+<h3>📱 Adjustable Tripod Stand</h3>
 <p>₦10,000</p>
 <p>Perfect for TikTok, YouTube, photography, live streaming and content creation.</p>
 <button onclick="addCart('Tripod Stand',10000)">Add to Cart 🛒</button>
 </div>
+
 </div>
 </section>
+
 <section class="cart">
 <h2>🛒 Shopping Basket</h2>
 <div id="cartItems">
-Your basket is empty
+<p>Your basket is empty</p>
 </div>
 <h3>Total: ₦<span id="total">0</span></h3>
 <a class="whatsapp" href="https://wa.me/2347031319373">
-Checkout on WhatsApp
+📱 Checkout on WhatsApp
 </a>
 </section>
+
 <section id="reviews">
 <h2>⭐ Customer Reviews</h2>
 <div class="review-box">
 <input type="text" placeholder="Your name">
 <textarea placeholder="Write your review"></textarea>
-<button>Submit Review</button>
+<button>Submit Review ⭐</button>
 </div>
-</section><section id="policy">
+</section>
+
+<section id="policy">
 <h2>📜 Store Policy</h2>
-<p>
-At Zicolicious Technology, we are committed to providing quality gadgets and excellent customer service.
-</p>
+<p>At Zicolicious Technology, we are committed to providing quality gadgets and excellent customer service.</p>
 <ul>
 <li>✅ Genuine and quality products</li>
 <li>✅ Delivery available based on location</li>
@@ -93,27 +99,59 @@ At Zicolicious Technology, we are committed to providing quality gadgets and exc
 <li>✅ Customer satisfaction is our priority</li>
 </ul>
 </section>
+
 <section id="about">
 <h2>About Zicolicious Technology</h2>
-<p>
-Zicolicious Technology is a premium tech accessories brand providing affordable and reliable gadgets.
-We bring you smart accessories that make life easier.
-</p>
+<p>Zicolicious Technology is a premium tech accessories brand providing affordable and reliable gadgets. We bring you smart accessories that make life easier.</p>
 </section>
+
 <section id="contact">
 <h2>📞 Contact Us</h2>
 <p>WhatsApp: 07031319373</p>
-<p>
-TikTok:
-<a href="https://www.tiktok.com/@zicolicious16">
-@Zicolicious16
-</a>
-</p>
+<p>TikTok: <a href="https://www.tiktok.com/@zicolicious16">@Zicolicious16</a></p>
 </section>
+
 <footer>
 <p>© 2026 Zicolicious Technology. All Rights Reserved.</p>
 <p>Premium Gadgets • Smart Accessories • Trusted Quality</p>
 </footer>
-<script src="script.js"></script>
+
+<script>
+let items = [];
+let total = 0;
+
+function addCart(name, price) {
+  items.push({name: name, price: price});
+  total += price;
+  updateCart();
+}
+
+function removeCart(index) {
+  total -= items[index].price;
+  items.splice(index, 1);
+  updateCart();
+}
+
+function updateCart() {
+  let cartHTML = '';
+  
+  if (items.length === 0) {
+    cartHTML = '<p>Your basket is empty</p>';
+  } else {
+    items.forEach((item, index) => {
+      cartHTML += `
+        <div class="cart-item">
+          <span>${item.name} - ₦${item.price}</span>
+          <button class="remove-btn" onclick="removeCart(${index})">❌ Remove</button>
+        </div>
+      `;
+    });
+  }
+  
+  document.getElementById('cartItems').innerHTML = cartHTML;
+  document.getElementById('total').innerHTML = total;
+}
+</script>
+
 </body>
 </html>
