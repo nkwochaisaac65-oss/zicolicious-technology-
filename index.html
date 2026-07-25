@@ -4,16 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Zicolicious Technology | Premium Gadgets Store</title>
+<title>Zicolicious Technology</title>
 
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-<div class="promo">
-🔥 30% OFF YOUR FIRST ORDER 🔥 Use Promo Code: <b>Isaac123</b>
+<div class="top-banner">
+🔥 30% OFF YOUR FIRST ORDER | Use Code: Isaac123 🔥
 </div>
 
 
@@ -23,12 +22,16 @@
 Zicolicious
 </div>
 
-<div class="nav">
+<nav>
 <a href="#products">Shop</a>
 <a href="#reviews">Reviews</a>
 <a href="#contact">Contact</a>
-<button onclick="openCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
-</div>
+
+<button onclick="openCart()">
+🛒 Cart (<span id="cartCount">0</span>)
+</button>
+
+</nav>
 
 </header>
 
@@ -36,13 +39,15 @@ Zicolicious
 
 <section class="hero">
 
-<h1>Premium Tech. Delivered Fast.</h1>
+<h1>
+Premium Gadgets At Your Fingertips
+</h1>
 
 <p>
 Power Banks • Smartwatches • Earbuds • Accessories
 </p>
 
-<button onclick="scrollProducts()">
+<button onclick="goShop()">
 Shop Now
 </button>
 
@@ -50,11 +55,12 @@ Shop Now
 
 
 
+
 <section class="categories">
 
 <h2>Categories</h2>
 
-<div class="category-box">
+<div class="category-container">
 
 <div>🔋 Power Banks</div>
 <div>⌚ Smart Watches</div>
@@ -69,11 +75,12 @@ Shop Now
 
 
 
+
 <section id="products">
 
 <h2>Our Products</h2>
 
-<div id="productList" class="products">
+<div id="productsContainer">
 
 </div>
 
@@ -81,23 +88,27 @@ Shop Now
 
 
 
-<section class="promo-box">
 
-<h2>Special Offer</h2>
+
+<section class="offer">
+
+<h2>First Order Discount</h2>
 
 <p>
-Get 30% discount on your first purchase.
+Get 30% discount on your first item.
 </p>
 
-<input id="promoInput" placeholder="Enter Promo Code">
+<input id="promoCode" placeholder="Enter Promo Code">
 
-<button onclick="applyPromo()">
+<button onclick="checkPromo()">
 Apply
 </button>
 
-<p id="promoMessage"></p>
+<p id="promoResult"></p>
 
 </section>
+
+
 
 
 
@@ -107,21 +118,17 @@ Apply
 
 <div class="review">
 ⭐⭐⭐⭐⭐
-<p>
-"Excellent gadgets and fast delivery. I love my power bank."
-</p>
+<p>Great products and fast delivery.</p>
 </div>
-
 
 <div class="review">
 ⭐⭐⭐⭐⭐
-<p>
-"Zicolicious Technology gives quality products."
-</p>
+<p>Zicolicious gadgets are reliable.</p>
 </div>
 
-
 </section>
+
+
 
 
 
@@ -129,19 +136,14 @@ Apply
 
 <h2>Contact Us</h2>
 
-<p>
-WhatsApp: 07031319373
-</p>
+<p>WhatsApp: 07031319373</p>
 
-<p>
-TikTok: @Zicolicious16
-</p>
+<p>TikTok: @Zicolicious16</p>
 
-<p>
-Established: 2026
-</p>
+<p>Established: 2026</p>
 
 </section>
+
 
 
 
@@ -150,24 +152,21 @@ Established: 2026
 <h3>Zicolicious Technology</h3>
 
 <p>
-Premium Gadgets • Trusted Quality
-</p>
-
-<p>
-© 2026 All Rights Reserved
+Premium gadgets. Trusted quality.
 </p>
 
 </footer>
 
 
 
-<!-- CART -->
 
-<div id="cartModal" class="modal">
+
+
+<div id="cartModal">
 
 <div class="cart-box">
 
-<h2>Your Cart</h2>
+<h2>Your Basket</h2>
 
 <div id="cartItems"></div>
 
@@ -175,11 +174,9 @@ Premium Gadgets • Trusted Quality
 Total: ₦<span id="cartTotal">0</span>
 </h3>
 
-
 <button onclick="checkout()">
 Order on WhatsApp
 </button>
-
 
 <button onclick="closeCart()">
 Close
@@ -192,8 +189,8 @@ Close
 
 
 
-<script src="script.js"></script>
 
+<script src="script.js"></script>
 
 </body>
 </html>
