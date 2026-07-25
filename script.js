@@ -4,113 +4,107 @@ const products = [
 name:"Power Bank 50,000mAh",
 price:40000,
 image:"images/powerbank50.jpg",
-desc:"Ultra high capacity power bank with fast charging and reliable battery backup."
+description:"High capacity power bank with fast charging and long battery backup."
 },
 
 {
 name:"Power Bank 20,000mAh",
 price:15000,
 image:"images/powerbank20.jpg",
-desc:"Portable 20,000mAh power bank for everyday charging."
+description:"Portable power bank for everyday charging."
 },
 
 {
 name:"iTel Power Bank",
 price:20000,
 image:"images/itel-powerbank.jpg",
-desc:"Strong and reliable iTel power bank."
+description:"Reliable iTel power bank with safety protection."
 },
 
 {
 name:"Smartwatch",
 price:20000,
 image:"images/smartwatch.jpg",
-desc:"Smart watch with fitness tracking and notifications."
+description:"Smartwatch with fitness tracking and notifications."
 },
 
 {
 name:"iTel Smartwatch",
 price:30000,
 image:"images/itel-smartwatch.jpg",
-desc:"Premium iTel smartwatch with smart features."
+description:"Premium iTel smartwatch with smart features."
 },
 
 {
 name:"Oraimo Smartwatch",
 price:30000,
 image:"images/oraimo-smartwatch.jpg",
-desc:"Oraimo smartwatch with health tracking and long battery."
+description:"Oraimo smartwatch with health tracking."
 },
 
 {
 name:"Transparent Buds",
 price:6000,
 image:"images/transparent-buds.jpg",
-desc:"Stylish wireless earbuds with clear sound."
+description:"Wireless earbuds with clear sound quality."
 },
 
 {
 name:"Neckband Earpiece",
 price:5000,
 image:"images/neckband.jpg",
-desc:"Comfortable neckband earpiece with quality sound."
+description:"Comfortable neckband earpiece."
 },
 
 {
 name:"JBL Earpod",
 price:15000,
 image:"images/jbl-earpod.jpg",
-desc:"Premium JBL audio experience."
+description:"Premium JBL sound experience."
 },
 
 {
 name:"Small Tripod Stand",
 price:6000,
 image:"images/small-tripod.jpg",
-desc:"Portable tripod for photos and videos."
+description:"Portable tripod for videos and pictures."
 },
 
 {
 name:"Adjustable Tripod Stand",
 price:10000,
 image:"images/tripod.jpg",
-desc:"Strong adjustable tripod for content creators."
+description:"Strong adjustable tripod stand."
 },
 
 {
 name:"Manteo Multifunctional Tripod",
 price:5000,
 image:"images/manteo-tripod.jpg",
-desc:"Multi-purpose tripod stand for phones and cameras."
+description:"Multi-purpose tripod for content creators."
 },
 
 {
 name:"Dex Fan",
 price:10000,
 image:"images/dex-fan.jpg",
-desc:"Portable fan for cool comfort anywhere."
+description:"Portable fan for cooling anywhere."
 }
 
 ];
 
 
-let cart=[];
+let cart = [];
 
 
-function displayProducts(){
 
-let box=document.getElementById("productList");
+function showProducts(){
 
-box.innerHTML=products.map((p,index)=>`
+let box = document.getElementById("productsContainer");
+
+
+box.innerHTML = products.map((product,index)=>`
 
 <div class="product-card">
 
-<img src="${p.image}" alt="${p.name}">
-
-<h3>${p.name}</h3>
-
-<p>${p.desc}</p>
-
-<h3 class="price">₦${p.price.toLocaleString()}</h3>
-
-<button onclick="addCart
+<img src="${product.image}" alt="${product.name}">
