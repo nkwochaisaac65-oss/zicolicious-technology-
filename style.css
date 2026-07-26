@@ -134,7 +134,7 @@ header {
 
 .product-bottom {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   margin-top: auto;
   padding-top: 1rem;
@@ -145,6 +145,22 @@ header {
   font-size: 1.2rem;
   font-weight: 700;
   color: #d4af37;
+}
+
+.add-btn {
+  background: transparent;
+  color: #d4af37;
+  border: 1px solid #d4af37;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-btn:hover {
+  background: #d4af37;
+  color: #0b132b;
 }
 
 /* FOOTER */
