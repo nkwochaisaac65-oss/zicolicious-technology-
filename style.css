@@ -1,0 +1,290 @@
+/* Zicolicious Tech & Accessories
+   Premium Black, White & Blue Theme
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+    color: #111827;
+    line-height: 1.6;
+}
+
+
+/* Header */
+
+header {
+    width: 100%;
+    background: #000000;
+    color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+
+nav a:hover {
+    color: #2563eb;
+}
+
+
+
+/* Hero */
+
+.hero {
+    min-height: 80vh;
+    background:
+    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+    url("images/banner.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    padding: 8%;
+    color: white;
+}
+
+
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 45px;
+    max-width: 600px;
+}
+
+
+.hero p {
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+
+button:hover {
+    background: #1d4ed8;
+    transform: translateY(-3px);
+}
+
+
+
+/* Sections */
+
+section {
+    padding: 60px 8%;
+}
+
+
+h2 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+
+
+/* Categories */
+
+.category-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    gap: 20px;
+}
+
+
+.category {
+    background: #f3f4f6;
+    padding: 30px;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+
+.category:hover {
+    background: #2563eb;
+    color: white;
+    transform: translateY(-5px);
+}
+
+
+
+/* Products */
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 30px;
+}
+
+
+.product {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.1);
+    transition: .3s;
+}
+
+
+.product:hover {
+    transform: translateY(-8px);
+}
+
+
+.product img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+
+.product h3 {
+    margin-top: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.product h4 {
+    color: #2563eb;
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+
+.stock {
+    color: green;
+    font-weight: 600;
+}
+
+
+
+/* About */
+
+#about {
+    background: #111827;
+    color: white;
+    text-align: center;
+}
+
+
+
+/* Contact */
+
+#contact {
+    text-align: center;
+}
+
+
+
+/* Footer */
+
+footer {
+    background: #000000;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+
+footer a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+
+/* Mobile Responsive */
+
+@media(max-width:768px){
+
+header {
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+nav {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.hero h1 {
+    font-size: 32px;
+}
+
+
+.hero {
+    min-height: 70vh;
+}
+
+
+section {
+    padding: 40px 5%;
+}
+
+
+h2 {
+    font-size: 26px;
+}
+
+
+.product img {
+    height: 200px;
+}
+
+}
