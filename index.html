@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zicolicious Tech & Accessories</title>
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-blue: #0066ff;
+      --accent-hover: #0052cc;
+      --accent-green: #25D366;
+      --accent-green-hover: #1da851;
+      --border-color: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      padding-bottom: 60px;
+    }
+
+    header {
+      background-color: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--accent-blue);
+    }
+
+    .search-bar {
+      width: 40%;
+      max-width: 400px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-card);
+      color: var(--text-main);
+      outline: none;
+    }
+
+    .search-bar input:focus {
+      border-color: var(--accent-blue);
+    }
+
+    .cart-btn {
+      background-color: var(--accent-blue);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s ease;
+    }
+
+    .cart-btn:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(180deg, rgba(0,102,255,0.1) 0%, rgba(15,23,42,0) 100%);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .product-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-blue);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.8rem;
+    }
+
+    .product-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .product-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.5rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .product-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .add-to-cart {
+      background-color: transparent;
+      color: var(--accent-blue);
+      border: 1px solid var(--accent-blue);
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .add-to-cart:hover {
+      background-color: var(--accent-blue);
+      color: white;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal {
+      background-color: var(--bg-card);
+      width: 90%;
+      max-width: 500px;
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-color);
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .cart-items {
+      overflow-y: auto;
+      flex-grow: 1;
+      margin-bottom: 1rem;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .cart-total {
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--border-color);
+    }
+
+    .checkout-btn {
+      width: 100%;
+      background-color: var(--accent-green);
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.2s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .checkout-btn:hover {
+      background-color: var(--accent-green-hover);
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .search-bar {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Zicolicious<span>Tech</span></div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search tech & accessories..." onkeyup="filterProducts()">
+    </div>
+    <button class="cart-btn" onclick="toggleCart()">
+      🛒 Cart (<span id="cartCount">0</span>)
+    </button>
+  </header>
+
+  <section class="hero">
+    <h1>Quality Tech & Gear</h1>
+    <p>Explore high-performance audio, smart wearables, and power accessories.</p>
+  </section>
+
+  <main class="container">
+    <div class="product-grid" id="productGrid"></div>
+  </main>
+
+  <div class="modal-overlay" id="cartModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Your Shopping Cart</h2>
+        <button class="close-btn" onclick="toggleCart()">&times;</button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <p style="color: var(--text-muted);">Your cart is empty.</p>
+      </div>
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">₦0</span>
+      </div>
+      <button class="checkout-btn" onclick="checkoutWhatsApp()">
+        Order via WhatsApp 💬
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const products = [
+      { id: 1, name: "Full Touch Screen Smart Bluetooth Call Smartwatch", price: 9950, desc: "Square full-touch smartwatch with Bluetooth calling. Track fitness, notifications & calls. Compatible with Android & iOS.", image: "https://placehold.co/400x300/1e293b/0066ff?text=Smartwatch" },
+      { id: 2, name: "ALIGHT CHARGER Universal 2-Pin Watch Charger Cable", price: 6100, desc: "Universal 2-pin magnetic charger for smartwatches. Fast + stable charging. 1m USB cable.", image: "https://placehold.co/400x300/1e293b/0066ff?text=Watch+Charger" },
+      { id: 3, name: "Music Pioneer Wireless Smart Bluetooth 5.3 Polarized Headset Glasses", price: 11150, desc: "Sunglasses + Bluetooth headset in one. Music, calls & UV protection. Open-ear design with mic.", image: "https://placehold.co/400x300/1e293b/0066ff?text=Smart+Glasses" },
+      { id: 4, name: "B39 Foldable Headset With Blinking LED Lights", price: 11500, desc: "Foldable over-ear headset with RGB LED lights. Deep bass, Bluetooth + TF card.", image: "https://placehold.co/400x300/1e293b/0066ff?text=B39+Headset" },
+      { id: 5, name: "Wireless Bluetooth Touch Control LED Digital Earphones TWS", price: 8100, desc: "TWS earbuds with LED battery display + touch control. Power bank case. 5h playtime.", image: "https://placehold.co/400x300/1e293b/0066ff?text=LED+TWS+Earbuds" },
+      { id: 6, name: "Cross Border Exclusive Wireless EarPods Bluetooth Earphones", price: 9750, desc: "Compact wireless earbuds in black. True wireless stereo + built-in mic. Pocket-size case.", image: "https://placehold.co/400x300/1e293b/0066ff?text=Black+EarPods" },
+      { id: 7, name: "Cool Bluetooth Heavy Bass Headset - Red & Black", price: 12100, desc: "Sports wireless headset with heavy bass. Foldable, padded, 10h battery. Perfect for gym.", image: "https://placehold.co/400x300/1e293b/0066ff?text=Heavy+Bass+Headset" },
+      { id: 8, name: "P47 Foldable Bluetooth Headset - White", price: 9150, desc: "P47 over-ear wireless headset. Stereo bass + FM radio + TF slot. White color.", image: "https://placehold.co/400x300/1e293b/0066ff?text=P47+Headset+White" },
+      { id: 9, name: "Invisible Wireless Open Ear Sport Headphone", price: 12850, desc: "Open-ear waterproof earbuds. Stays in during sports. 8h battery + charging case.", image: "https://placehold.co/400x300/1e293b/0066ff?text=Open+Ear+Headphones" },
+      { id: 10, name: "Wireless Bluetooth Headphones On-Ear - Black & Red", price: 13700, desc: "On-ear Bluetooth 5.1 headphones. Foldable, LED lights, 12h playtime.", image: "https://placehold.co/400x300/1e293b/0066ff?text=On-Ear+Headphones" },
+      { id: 11, name: "Wireless Bluetooth 5.0 Stereo Earbuds - White", price: 8500, desc: "Airpods-style earbuds V5.0. Crystal clear calls + touch control. White.", image: "https://placehold.co/400x300/1e293b/0066ff?text=Stereo+Earbuds" },
+      { id: 12, name: "P9 Wireless Bluetooth Stereo Headphone", price: 9450, desc: "P9 over-ear headset for gaming & music. Soft ear cushions + deep bass. Black.", image: "https://placehold.co/400x300/1e293b/0066ff?text=P9+Headphone" },
+      { id: 13, name: "Pro4 Bluetooth Wireless Earbuds", price: 12250, desc: "Pro4 earbuds with 48h total battery. 4-5h per charge + fast charge 30min.", image: "https://placehold.co/400x300/1e293b/0066ff?text=Pro4+Earbuds" },
+      { id: 14, name: "EAGEAT F9 Wireless Headset True Bass", price: 7950, desc: "F9 TWS with LED display case. True bass sound + touch control.", image: "https://placehold.co/400x300/1e293b/0066ff?text=F9+Wireless+Earbuds" },
+      { id: 15, name: "Litglobe Pro6 TWS Wireless Earbuds - Black", price: 7850, desc: "Pro6 deep bass earbuds. In-ear design, 6h battery. Black.", image: "https://placehold.co/400x300/1e293b/0066ff?text=Pro6+Earbuds" },
+      { id: 16, name: "Airpods Bluetooth Headset Case - Cartoon Clown Fish", price: 4450, desc: "Silicone protective case for Airpods. Cute clown fish design with keychain.", image: "https://placehold.co/400x300/1e293b/0066ff?text=Clown+Fish+Case" },
+      { id: 17, name: "OWIN 10000mAh Power Bank with 4 Built-in Cables", price: 9700, desc: "10000mAh fast charging power bank. 4 built-in cables + digital display. Black.", image: "https://placehold.co/400x300/1e293b/0066ff?text=OWIN+10000mAh" },
+      { id: 18, name: "EASYPIE 20000mAh Ultra Slim Power Bank", price: 12550, desc: "20000mAh slim power bank. Dual USB + fast charging. Portable black design.", image: "https://placehold.co/400x300/1e293b/0066ff?text=EASYPIE+20000mAh" },
+      { id: 19, name: "Mini Desktop USB Rechargeable Fan", price: 8050, desc: "Mini portable USB fan. Strong wind, quiet, rechargeable. White.", image: "https://placehold.co/400x300/1e293b/0066ff?text=USB+Mini+Fan" },
+      { id: 20, name: "Large Capacity 50000mAh Centralized Box Power Bank - Red", price: 40900, desc: "50000mAh high capacity power bank with 22.5W fast charging and 4-wire setup. Red.", image: "https://placehold.co/400x300/1e293b/0066ff?text=50000mAh+Red" },
+      { id: 21, name: "Large Capacity 50000mAh Centralized Box Power Bank - Black", price: 36050, desc: "50000mAh high capacity power bank with 22.5W fast charging and 4-wire setup. Black.", image: "https://placehold.co/400x300/1e293b/0066ff?text=50000mAh+Black" },
+      { id: 22, name: "bensoo G01 Sports Bluetooth Headsets Wireless Earphones", price: 4500, desc: "Lightweight neckband sports wireless earbuds. Secure fit for workouts.", image: "https://placehold.co/400x300/1e293b/0066ff?text=bensoo+G01" },
+      { id: 23, name: "Phone Tripod Mobile Phone Clip Bracket Monopod Stand", price: 6250, desc: "Flexible mobile tripod stand with phone bracket. Ideal for filming and photos.", image: "https://placehold.co/400x300/1e293b/0066ff?text=Phone+Tripod" },
+      { id: 24, name: "Huameisi Premium Over-Ear pods Wireless Bluetooth V5.3", price: 17650, desc: "Premium over-ear Bluetooth 5.3 earphones with charging case. 24h long battery life.", image: "https://placehold.co/400x300/1e293b/0066ff?text=Huameisi+V5.3" }
+    ];
+
+    let cart = [];
+
+    function renderProducts(items) {
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = items.map(product => `
+        <div class="product-card">
+          <img 
+            src="${product.image}" 
+            alt="${product.name}" 
+            class="product-image"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x300/1e293b/0066ff?text=No+Image';"
+          >
+          <div>
+            <div class="product-title">${product.name}</div>
+            <div class="product-desc">${product.desc}</div>
+          </div>
+          <div class="product-footer">
+            <span class="product-price">₦${product.price.toLocaleString()}</span>
+            <button class="add-to-cart" onclick="addToCart(${product.id})">Add +</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterProducts() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const filtered = products.filter(p => 
+        p.name.toLowerCase().includes(query) || 
+        p.desc.toLowerCase().includes(query)
+      );
+      renderProducts(filtered);
+    }
+
+    function addToCart(productId) {
+      const item = products.find(p => p.id === productId);
+      cart.push(item);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      document.getElementById('cartCount').innerText = cart.length;
+      
+      const cartItemsContainer = document.getElementById('cartItems');
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = `<p style="color: var(--text-muted);">Your cart is empty.</p>`;
+      } else {
+        cartItemsContainer.innerHTML = cart.map((item, index) => `
+          <div class="cart-item">
+            <div>
+              <div style="font-weight: 600;">${item.name}</div>
+              <div style="color: var(--text-muted); font-size: 0.85rem;">₦${item.price.toLocaleString()}</div>
+            </div>
+            <button onclick="removeFromCart(${index})" style="background:none; border:none; color: #ff4d4d; cursor:pointer;">Remove</button>
+          </div>
+        `).join('');
+      }
+
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      document.getElementById('cartTotal').innerText = `₦${total.toLocaleString()}`;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function toggleCart() {
+      const modal = document.getElementById('cartModal');
+      modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function checkoutWhatsApp() {
+      if (cart.length === 0) {
+        alert("Your cart is empty! Please add items before checking out.");
+        return;
+      }
+
+      const phoneNumber = "2347031319373";
+      let message = "Hello Zicolicious Tech! 👋\nI would like to place an order for:\n\n";
+
+      cart.forEach((item, index) => {
+        message += `${index + 1}. ${item.name} - ₦${item.price.toLocaleString()}\n`;
+      });
+
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      message += `\n*Total Amount:* ₦${total.toLocaleString()}\n\nPlease confirm availability and payment details.`;
+
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    renderProducts(products);
+  </script>
+</body>
+</html>
